@@ -1,29 +1,76 @@
 # Lightweight OpenClaw for Ollama
 
-A fast, lightweight coding assistant powered by local Ollama models - a lightweight alternative to Claude for coding tasks.
+A fast, local coding assistant powered by Ollama - **two versions** to fit your needs!
 
-## Features
+## 🎯 Choose Your Version
 
-- 🚀 **Fast & Local**: Runs entirely on your machine using Ollama
-- 💬 **Interactive Chat**: Conversational interface for coding questions
-- 📁 **File Analysis**: Analyze code files directly
+### 🦅 **OpenClaw (Full-Featured)** - `openclaw.py`
+**NEW!** Complete coding agent with tool calling - works like Claude but runs locally!
+
+**Features**:
+- ✅ **Read/Write Files**: Automatically reads and modifies files
+- ✅ **Execute Commands**: Runs shell commands and scripts
+- ✅ **Python REPL**: Executes Python code directly
+- ✅ **Search Files**: Grep-based codebase search
+- ✅ **Tool Calling**: Agentic workflow with automated tool use
+- ✅ **Interactive Mode**: Conversational AI that uses tools when needed
+
+**Best For**: Real coding work, file manipulation, automation
+
+### 💬 **Coding Agent (Simple)** - `coding_agent.py`
+Lightweight Q&A assistant for quick help
+
+**Features**:
+- 🚀 **Fast & Simple**: Pure text completion, no tools
+- 💬 **Interactive Chat**: Ask coding questions
+- 📁 **File Analysis**: Paste code for review
 - 🔍 **Multiple Tasks**: Code review, debugging, optimization, refactoring
-- 🎯 **Focused**: Specialized for coding tasks
+- 🎯 **Focused**: Specialized for coding advice
 - 🔒 **Private**: All data stays on your machine
+
+**Best For**: Quick questions, learning, code advice
+
+## ⚡ Quick Start
+
+### OpenClaw (Full-Featured)
+```bash
+# Install model (first time only)
+ollama pull qwen2.5-coder:7b
+
+# Run OpenClaw
+python openclaw.py
+
+# Or with a task
+python openclaw.py --task "Review app.py and fix any bugs"
+```
+
+### Coding Agent (Simple)
+```bash
+# Install model (first time only)
+ollama pull codellama
+
+# Run agent
+python coding_agent.py
+
+# Or ask a question
+python coding_agent.py --prompt "How do I use async/await?"
+```
 
 ## Prerequisites
 
 1. **Install Ollama**: [https://ollama.ai](https://ollama.ai)
+
 2. **Pull a coding model**:
    ```bash
-   # Recommended: CodeLlama (7B - fast)
-   ollama pull codellama
+   # For OpenClaw (needs tool-calling support)
+   ollama pull qwen2.5-coder:7b    # Recommended
+   ollama pull qwen2.5-coder:32b   # Best quality
+   ollama pull deepseek-coder-v2   # Great reasoning
 
-   # Or DeepSeek Coder (6.7B - excellent for code)
-   ollama pull deepseek-coder
-
-   # Or Qwen Coder (smaller, faster)
-   ollama pull qwen2.5-coder
+   # For Coding Agent (any model works)
+   ollama pull codellama           # Fast, general
+   ollama pull deepseek-coder      # Code generation
+   ollama pull qwen2.5-coder:3b    # Very fast
    ```
 
 3. **Start Ollama service**:
