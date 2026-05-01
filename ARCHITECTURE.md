@@ -2,7 +2,13 @@
 
 ## Overview
 
-This document explains how the Lightweight OpenClaw agent works internally, including the prompts used and the interaction with Ollama's API.
+This document explains how the OpenClaw agents work internally, including prompts, tool calling, and Ollama API interaction.
+
+## 📦 Three Versions
+
+1. **coding_agent.py** - Simple text-only Q&A (no tools)
+2. **openclaw.py** - Full agent with 6 tools (file ops, commands, Python REPL)
+3. **openclaw_pro.py** - Advanced agent with 9 tools (adds web browsing, Discord, business planning)
 
 ## System Architecture
 

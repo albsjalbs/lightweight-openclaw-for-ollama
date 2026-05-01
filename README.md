@@ -4,8 +4,21 @@ A fast, local coding assistant powered by Ollama - **two versions** to fit your 
 
 ## 🎯 Choose Your Version
 
+### 💼 **OpenClaw Pro (Business Builder)** - `openclaw_pro.py` ⭐ NEW!
+**The Ultimate Version!** AI co-founder that codes, researches, and builds businesses!
+
+**Features**:
+- 🌐 **Web Search**: Searches web and opens results in visible browser!
+- 🔗 **Web Browse**: Opens any URL in your browser
+- 💬 **Discord Bot**: Run as a Discord bot for team collaboration
+- 💼 **Business Plans**: Auto-generates business strategy documents
+- 🎯 **Business Focus**: Specialized in building profitable products
+- ✅ **All OpenClaw Tools**: Files, commands, Python REPL, search
+
+**Best For**: Building businesses, market research, team collaboration, launching products
+
 ### 🦅 **OpenClaw (Full-Featured)** - `openclaw.py`
-**NEW!** Complete coding agent with tool calling - works like Claude but runs locally!
+Complete coding agent with tool calling - works like Claude but runs locally!
 
 **Features**:
 - ✅ **Read/Write Files**: Automatically reads and modifies files
@@ -31,6 +44,25 @@ Lightweight Q&A assistant for quick help
 **Best For**: Quick questions, learning, code advice
 
 ## ⚡ Quick Start
+
+### OpenClaw Pro (Business Builder) ⭐ Recommended
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Install model
+ollama pull qwen2.5-coder:7b
+
+# Run OpenClaw Pro
+python openclaw_pro.py
+
+# Try a business-focused task
+python openclaw_pro.py --task "Research profitable SaaS ideas and create a business plan"
+
+# Run as Discord bot
+export DISCORD_BOT_TOKEN="your_token"
+python openclaw_pro.py --discord
+```
 
 ### OpenClaw (Full-Featured)
 ```bash
