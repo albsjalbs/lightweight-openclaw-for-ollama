@@ -1,0 +1,54 @@
+# Secrets and Environment Variables
+.env
+.env.local
+*.token
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Generated Files
+business_plans/
+*.log
+*.tmp
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Discord Bot Data
+discord_cache/
+bot_state.json

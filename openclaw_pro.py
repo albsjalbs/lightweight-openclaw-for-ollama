@@ -2,6 +2,7 @@
 """
 OpenClaw Pro - Advanced agent with web browsing, Discord integration, and business focus
 Specialized for coding and building autonomous businesses
+WITH SECURITY: Token management, command filtering, path validation
 """
 
 import os
@@ -19,14 +20,23 @@ import re
 import webbrowser
 from datetime import datetime
 
+# Import security configuration
+try:
+    from security_config import SecurityConfig, setup_security
+except ImportError:
+    print("⚠️  Warning: security_config.py not found. Running without enhanced security.")
+    SecurityConfig = None
+    setup_security = None
+
 
 class Tool:
     """Base class for tools"""
 
-    def __init__(self, name: str, description: str, parameters: Dict[str, Any]):
+    def __init__(self, name: str, description: str, parameters: Dict[str, Any], security_config=None):
         self.name = name
         self.description = description
         self.parameters = parameters
+        self.security_config = security_config
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -43,7 +53,7 @@ class Tool:
 
 
 class ReadFileTool(Tool):
-    def __init__(self):
+    def __init__(self, security_config=None):
         super().__init__(
             name="read_file",
             description="Read file contents - use this before analyzing or modifying code",
@@ -53,11 +63,19 @@ class ReadFileTool(Tool):
                     "file_path": {"type": "string", "description": "Path to file"}
                 },
                 "required": ["file_path"]
-            }
+            },
+            security_config=security_config
         )
 
     def execute(self, file_path: str) -> str:
         try:
+            # Security check
+            if self.security_config and not self.security_config.is_path_safe(file_path):
+                return f"❌ Access denied: Path not allowed"
+
+            if self.security_config and not self.security_config.check_file_size(file_path):
+                return f"❌ File too large to read"
+
             path = Path(file_path).expanduser().resolve()
             if not path.exists():
                 return f"❌ File not found: {file_path}"
